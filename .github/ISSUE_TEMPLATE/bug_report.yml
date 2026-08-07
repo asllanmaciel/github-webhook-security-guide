@@ -1,0 +1,41 @@
+name: Problema em um exemplo
+description: Relate um comportamento incorreto ou inseguro de forma reproduzível.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: Não inclua secrets, assinaturas válidas ou payloads de terceiros.
+  - type: dropdown
+    id: implementation
+    attributes:
+      label: Implementação afetada
+      options:
+        - Node.js
+        - PHP
+        - Documentação
+        - Outro
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: O que aconteceu?
+      description: Descreva o resultado atual e o resultado esperado.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Como reproduzir
+      description: Informe passos e versões usando apenas dados fictícios.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmações
+      options:
+        - label: Removi secrets, assinaturas válidas e dados de terceiros.
+          required: true
+        - label: Procurei por uma issue semelhante antes de abrir esta.
+          required: true

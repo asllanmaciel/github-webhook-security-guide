@@ -1,0 +1,22 @@
+name: Melhoria ou novo exemplo
+description: Sugira um cenário, linguagem, teste ou melhoria de documentação.
+title: "[Sugestão]: "
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Qual risco ou necessidade isso cobre?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta
+      description: Explique a alteração e como ela preserva as garantias de segurança.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Referências técnicas
+      description: Adicione documentação oficial, especificações ou exemplos relacionados.
