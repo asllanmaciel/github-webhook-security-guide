@@ -61,6 +61,7 @@ Consulte a [documentação oficial sobre validação de webhooks](https://docs.g
 
 - Envie relatos sensíveis conforme a [política de segurança](.github/SECURITY.md); nunca abra secrets ou payloads reais em uma issue.
 - Para propor testes, exemplos ou melhorias, leia o [guia de contribuição](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).
+- [Escolha uma tarefa para primeira contribuição](https://github.com/asllanmaciel/github-webhook-security-guide/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) ou [veja tudo que precisa de ajuda](https://github.com/asllanmaciel/github-webhook-security-guide/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22help%20wanted%22).
 
 ## Licença
 
