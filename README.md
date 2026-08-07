@@ -1,5 +1,9 @@
 # GitHub Webhook Security Guide
 
+[![Test](https://github.com/asllanmaciel/github-webhook-security-guide/actions/workflows/test.yml/badge.svg)](https://github.com/asllanmaciel/github-webhook-security-guide/actions/workflows/test.yml)
+[![Release](https://img.shields.io/github/v/release/asllanmaciel/github-webhook-security-guide?display_name=tag&sort=semver)](https://github.com/asllanmaciel/github-webhook-security-guide/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0f766e.svg)](LICENSE)
+
 Guia prático para receber webhooks do GitHub sem confiar cegamente no payload recebido.
 
 Os exemplos mostram como validar `X-Hub-Signature-256` em PHP e Node.js usando comparação em tempo constante. O material é independente de framework e não contém código de nenhum produto comercial.
@@ -52,6 +56,11 @@ Os exemplos recebem três valores: corpo bruto, header de assinatura e secret co
 A assinatura comprova que o payload foi assinado com o secret compartilhado; ela não substitui autorização de negócio, idempotência, limites de tamanho, rate limiting, TLS ou controle de acesso ao painel de logs.
 
 Consulte a [documentação oficial sobre validação de webhooks](https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries).
+
+## Segurança e contribuição
+
+- Envie relatos sensíveis conforme a [política de segurança](.github/SECURITY.md); nunca abra secrets ou payloads reais em uma issue.
+- Para propor testes, exemplos ou melhorias, leia o [guia de contribuição](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).
 
 ## Licença
 
