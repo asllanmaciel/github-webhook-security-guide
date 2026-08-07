@@ -1,0 +1,18 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test PHP example
+        run: php -d zend.assertions=1 -d assert.exception=1 tests/php-test.php
+      - name: Test Node.js example
+        run: node tests/node-test.mjs
