@@ -14,7 +14,7 @@ Os exemplos mostram como validar `X-Hub-Signature-256` em PHP e Node.js usando c
 - Valide `X-Hub-Signature-256` com HMAC SHA-256.
 - Use comparação em tempo constante.
 - Rejeite assinaturas ausentes, malformadas ou inválidas.
-- Guarde `X-GitHub-Delivery` para detectar entregas duplicadas.
+- Guarde `X-GitHub-Delivery` para detectar entregas duplicadas; veja o [padrão de idempotência `claim → process → complete/fail`](docs/idempotency.md).
 - Filtre os eventos permitidos pelo header `X-GitHub-Event`.
 - Responda rapidamente e envie processamento pesado para uma fila.
 - Nunca registre secrets ou payloads sensíveis sem política de retenção.
@@ -32,6 +32,12 @@ flowchart LR
     G --> H[Fila]
     H --> I[Processador do evento]
 ```
+
+## Idempotência e redeliveries
+
+Assinatura válida não significa execução única. Uma redelivery do GitHub mantém o mesmo `X-GitHub-Delivery`, então o consumidor deve fazer um claim atômico antes de produzir efeitos e precisa tratar concorrência, worker interrompido, TTL e retries de forma explícita.
+
+O guia [Idempotência de entregas com `X-GitHub-Delivery`](docs/idempotency.md) mostra um padrão independente de framework com SQL/Redis, leases, fencing token, retry/backoff e a janela crítica entre executar o efeito e marcar a delivery como concluída.
 
 ## Exemplos
 
