@@ -48,6 +48,17 @@ O guia [Idempotência de entregas com `X-GitHub-Delivery`](docs/idempotency.md) 
 
 Os exemplos recebem três valores: corpo bruto, header de assinatura e secret compartilhado.
 
+## Validação local
+
+A suíte pode ser executada sem GitHub Actions:
+
+```bash
+php tests/php-test.php
+node tests/node-test.mjs
+```
+
+O workflow de teste permanece disponível em modo manual. A manutenção normal prioriza execução local para evitar consumo desnecessário de CI.
+
 ## Configuração no GitHub
 
 1. Abra **Settings → Webhooks → Add webhook** no repositório.
@@ -68,6 +79,7 @@ Consulte a [documentação oficial sobre validação de webhooks](https://docs.g
 - Envie relatos sensíveis conforme a [política de segurança](.github/SECURITY.md); nunca abra secrets ou payloads reais em uma issue.
 - Para propor testes, exemplos ou melhorias, leia o [guia de contribuição](CONTRIBUTING.md) e o [código de conduta](CODE_OF_CONDUCT.md).
 - [Escolha uma tarefa para primeira contribuição](https://github.com/asllanmaciel/github-webhook-security-guide/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22) ou [veja tudo que precisa de ajuda](https://github.com/asllanmaciel/github-webhook-security-guide/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22help%20wanted%22).
+- Consulte também o [changelog](CHANGELOG.md).
 
 ## Licença
 
