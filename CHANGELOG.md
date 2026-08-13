@@ -7,6 +7,7 @@ All notable changes to this repository will be documented here.
 ### Added
 
 - detailed idempotency guidance for `X-GitHub-Delivery`, including claim/process/complete-fail flow, leases, retries and failure windows.
+- webhook receiver threat model covering trust boundaries, replay, business authorization, resource exhaustion, secret handling, logging, least privilege and incident response.
 
 ### Changed
 
