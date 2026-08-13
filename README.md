@@ -19,6 +19,8 @@ Os exemplos mostram como validar `X-Hub-Signature-256` em PHP e Node.js usando c
 - Responda rapidamente e envie processamento pesado para uma fila.
 - Nunca registre secrets ou payloads sensíveis sem política de retenção.
 
+Para a visão completa das fronteiras de confiança — incluindo replay, autorização de negócio, DoS, logs, secrets e privilégios downstream — consulte o [threat model do receiver](docs/threat-model.md).
+
 ## Fluxo recomendado
 
 ```mermaid
@@ -38,6 +40,20 @@ flowchart LR
 Assinatura válida não significa execução única. Uma redelivery do GitHub mantém o mesmo `X-GitHub-Delivery`, então o consumidor deve fazer um claim atômico antes de produzir efeitos e precisa tratar concorrência, worker interrompido, TTL e retries de forma explícita.
 
 O guia [Idempotência de entregas com `X-GitHub-Delivery`](docs/idempotency.md) mostra um padrão independente de framework com SQL/Redis, leases, fencing token, retry/backoff e a janela crítica entre executar o efeito e marcar a delivery como concluída.
+
+## Threat model e trust boundaries
+
+A assinatura HMAC autentica os bytes recebidos quando o secret permanece confidencial, mas não substitui outras camadas de segurança.
+
+O [threat model](docs/threat-model.md) cobre:
+
+- o que a assinatura garante — e o que não garante;
+- replay/redelivery e exatamente-uma-vez vs. idempotência;
+- autorização de repositório/projeto após autenticação;
+- limites de payload, rate limiting e disponibilidade;
+- redução de privilégio entre receiver, fila e workers;
+- logs, retenção e resposta a vazamento de secrets;
+- checklist para revisão de um endpoint antes de produção.
 
 ## Exemplos
 
