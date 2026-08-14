@@ -11,5 +11,8 @@ $signature = 'sha256=' . hash_hmac('sha256', $payload, $secret);
 assert(verifyGitHubWebhook($payload, $signature, $secret));
 assert(!verifyGitHubWebhook($payload . 'tampered', $signature, $secret));
 assert(!verifyGitHubWebhook($payload, '', $secret));
+assert(!verifyGitHubWebhook($payload, 'sha1=' . str_repeat('a', 40), $secret));
+assert(!verifyGitHubWebhook($payload, 'sha256=not-hex', $secret));
+assert(!verifyGitHubWebhook($payload, $signature, ''));
 
 echo "PHP checks passed.\n";
