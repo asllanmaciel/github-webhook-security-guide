@@ -6,7 +6,7 @@
 
 Guia prático para receber webhooks do GitHub sem confiar cegamente no payload recebido.
 
-Os exemplos mostram como validar `X-Hub-Signature-256` em PHP e Node.js usando comparação em tempo constante. O material é independente de framework e não contém código de nenhum produto comercial.
+Os exemplos mostram como validar `X-Hub-Signature-256` em PHP, Node.js e Python usando comparação em tempo constante. O material é independente de framework e não contém código de nenhum produto comercial.
 
 ## Checklist mínimo
 
@@ -61,8 +61,9 @@ O [threat model](docs/threat-model.md) cobre:
 |---|---|---|
 | PHP 8+ | [`examples/php/verify.php`](examples/php/verify.php) | `php tests/php-test.php` |
 | Node.js 20+ | [`examples/node/verify.mjs`](examples/node/verify.mjs) | `node tests/node-test.mjs` |
+| Python 3.10+ | [`examples/python/verify.py`](examples/python/verify.py) | `python3 tests/python-test.py` |
 
-Os exemplos recebem três valores: corpo bruto, header de assinatura e secret compartilhado.
+Os exemplos recebem três valores: corpo bruto, header de assinatura e secret compartilhado. No exemplo Python, passe o corpo bruto da requisição como `bytes`, sem decodificar ou reserializar o JSON antes da validação.
 
 ## Validação local
 
@@ -71,6 +72,7 @@ A suíte pode ser executada sem GitHub Actions:
 ```bash
 php tests/php-test.php
 node tests/node-test.mjs
+python3 tests/python-test.py
 ```
 
 O workflow de teste permanece disponível em modo manual. A manutenção normal prioriza execução local para evitar consumo desnecessário de CI.
